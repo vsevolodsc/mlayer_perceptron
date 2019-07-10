@@ -13,7 +13,9 @@ The software should be able to:
 
 ## XOR
 Train an MLP with __2 inputs__, __two hidden units__ and __one output__ on the following examples (XOR function): 
+
 __inputs__: [x1 x2] (1,0)
+
 __output__: XOR(x1, x2)
 
 ### Example XOR: 
