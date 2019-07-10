@@ -4,10 +4,10 @@ Learning `Go` programming language by re-implementing a `Connectionist Computing
 # Description
 The software should be able to:
 
-··* Create a new MLP with any given number of inputs, any number of outputs (can be sigmoidal or linear), and any number of hidden units in a single layer.
-··* Initialise the weights of the MLP to small random values
-··* Predict the outputs corresponding to an input vector
-··* Implement learning by backpropagation
++ Create a new MLP with any given number of inputs, any number of outputs (can be sigmoidal or linear), and any number of hidden units in a single layer.
++ Initialise the weights of the MLP to small random values
++ Predict the outputs corresponding to an input vector
++ Implement learning by backpropagation
 
 # Tasks:
 
@@ -17,8 +17,8 @@ __inputs__: [x1 x2] (1,0)
 __output__: XOR(x1, x2)
 
 ### Example XOR: 
-··* ((x1, x2), o1)
-··* ((0, 0), 0) ((0, 1), 1) ((1, 0), 1) ((1, 1), 0)
++ ((x1, x2), o1)
++ ((0, 0), 0) ((0, 1), 1) ((1, 0), 1) ((1, 1), 0)
 At the end of training, check if the MLP predicts correctly all the examples.
 
 ## Sin(x)
