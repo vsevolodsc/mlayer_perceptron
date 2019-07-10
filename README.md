@@ -2,32 +2,42 @@
 Learning `Go` programming language by re-implementing a `Connectionist Computing` assignment. 
 
 # Description
-Your software should be able to:
+The software should be able to:
 
-**Create a new MLP with any given number of inputs, any number of outputs (can be sigmoidal or linear), and any number of hidden units (sigmoidal) in a single layer.
-Initialise the weights of the MLP to small random values
-Predict the outputs corresponding to an input vector
-Implement learning by backpropagation
+..* Create a new MLP with any given number of inputs, any number of outputs (can be sigmoidal or linear), and any number of hidden units in a single layer.
+..* Initialise the weights of the MLP to small random values
+..* Predict the outputs corresponding to an input vector
+..* Implement learning by backpropagation
 
-## You need to test your software as follows:
+# Tasks:
 
-Train an MLP with 2 inputs, two hidden units and one output on the following examples (XOR function): ((0, 0), 0) ((0, 1), 1) ((1, 0), 1) ((1, 1), 0)
+## XOR
+Train an MLP with __2 inputs__, __two hidden units__ and __one output__ on the following examples (XOR function): 
+__inputs__: [x1 x2] (1,0)
+__output__: XOR(x1, x2)
+
+### Example XOR: 
+..* ((x1, x2), o1)
+..* ((0, 0), 0) ((0, 1), 1) ((1, 0), 1) ((1, 1), 0)
 At the end of training, check if the MLP predicts correctly all the examples.
-Generate 50 vectors containing 4 components each. The value of each component should be a random number between -1 and 1. These will be your input vectors. The corresponding output for each vector should be the sin() of the sum of the components. That is, for inputs: [x1 x2 x3 x4] the (single component) output should be: sin(x1+x2+x3+x4) Now train an MLP with 4 inputs, at least 5 hidden units and one output on 40 of these examples and keep the remaining 10 for testing.
-What is the error on training at the end? How does it compare with the error on the test set? Do you think you have learned satisfactorily?
 
-## Exceptional test (to aim for the max mark)
+## Sin(x)
+Generate 50 vectors containing 4 components each. The value of each component should be a random number between -1 and 1. These will be your input vectors. The corresponding output for each vector should be the sin() of the sum of the components. 
+__inputs__: [x1 x2 x3 x4] the (single component) 
+__output__ : sin(x1+x2+x3+x4) 
 
-Train an MLP on the letter recognition set available in the UCI Machine Learning repository: http://archive.ics.uci.edu/ml/machine-learning-databases/letterrecognition/letter-recognition.data The first entry of each line is the letter to be recognised (i.e. the target) and the following numbers are attributes extracted from images of the letters (i.e. your input). You can find a description of the set here: http://archive.ics.uci.edu/ml/datasets/Letter+Recognition
+Now train an MLP with 4 inputs, at least 5 hidden units and one output on 40 of these examples and keep the remaining 10 for testing.
+
+## Image Recongnition
+
+Train an MLP on the letter recognition set available in the UCI Machine Learning repository: http://archive.ics.uci.edu/ml/machine-learning-databases/letterrecognition/letter-recognition.data. 
+The first entry of each line is the letter to be recognised (i.e. the target) and the following numbers are attributes extracted from images of the letters (i.e. your input). 
+You can find a description of the set here: http://archive.ics.uci.edu/ml/datasets/Letter+Recognition
+
 Split the dataset in a training part containing approximately 4/5 of the records, and a testing part containing the rest. Your MLP should have as many inputs as there are attributes (17), as many hidden units as you want (I suggest ~10) and 26 outputs (one for each letter of the alphabet).
-You should train your MLP for at least 1000 epochs. After training, check how well you can classify the data reserved for testing. #What you need to hand in (electronically!)
-Copy of the whole code. I should be able to compile and run this.
-Files containing, for both mandatory tests: a. A printout of the error during training. b. A brief description of the test you ran, and how you think it worked.
-If you run the exceptional test, send me the same as for the mandatory tests, plus provide the final rate of correct classification for the test set.
+You should train your MLP for __at least 1000 epochs__. After training, check how well you can classify the data reserved for testing. 
 
-
-
-### Methods: 
+# Methods: 
 1. randomise() 
     Initialises W1 and W2 to small random values. Also don’t forget to set dW1 and dW2 to all zeroes – this could be a good place to do it. 
 2. forward(double* I) Forward pass. Input vector I is processed to produce an output, which is stored in O[]. 
@@ -35,6 +45,7 @@ If you run the exceptional test, send me the same as for the mandatory tests, pl
 4. updateWeights(double learningRate) this simply does (component by component, i.e. within for loops): W1 += learningRatedW1; W2 += learningRatedW2; dW1 = 0; dW2 = 0; 
 
  Training would proceed along these lines (pseudo-C code): 
+ ```C++
     for (int e=0; e<maxEpochs; e++) 
         { 
             error = 0; 
@@ -46,4 +57,7 @@ If you run the exceptional test, send me the same as for the mandatory tests, pl
                 } 
             cout << “Error at epoch “ << e << “ is “ << error << “\n”; 
         } 
+```
         The error that is output should, ideally, get smaller at every epoch. You may have to try different learning rates (too big and training will explode, too small and learning will be very slow), and different “every now and then” – to play safe you can even do the update only once every epoch
+
+# Results
